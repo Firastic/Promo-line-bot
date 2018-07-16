@@ -1,0 +1,17 @@
+<h1>Listing Promos</h1>
+
+<table>
+	<tr>
+		<th>Title</th>
+		<th>Type</th>
+		<th>Source</th>
+	</tr>
+
+	<% @promos.each do |promo| %>
+		<tr>
+			<td><%= promo.title %> </td>
+			<td><%= promo.type %> </td>
+			<td><%= link_to promo.source, promo.link %> </td>
+		</tr>
+	<% end %>
+</table>
