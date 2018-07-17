@@ -50,7 +50,7 @@ class Event
       else
         body["messages"] = "Command not recognized!"
       end
-      client.reply_message('token', body)
+      client.reply_message(@replyToken, body)
     end
   end
 
