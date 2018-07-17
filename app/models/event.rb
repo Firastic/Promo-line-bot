@@ -32,25 +32,23 @@ class Event
       #   faraday.authorization = true #todo: add channel access token
       # end
       body["replyToken"] = 1 #todo: add replyToken
-
+      reply_messages = []
       case @message["text"]
       when "!update"
         data = Crawler.new.update
-        messages = []
         data.each do |json|
           #todo: insert image into message
-          message.push({type: "imagemap", baseUrl: data, altText: "", baseSize: {height: 1040, width: 1040},})
+          reply_message.push({type: "imagemap", baseUrl: data, altText: "", baseSize: {height: 1040, width: 1040},})
           if(messages.size == 5)
             break;
           end
         end
-        body["messages"] = messages
       when "UwU"
-        body["messages"] = "Berisik"
+        reply_message.push("Berisik") 
       else
-        body["messages"] = "Command not recognized!"
+        reply_message.push("Command not recognized!")
       end
-      client.reply_message(@replyToken, body)
+      client.reply_message(@replyToken, reply_message)
     end
   end
 
