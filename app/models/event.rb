@@ -38,15 +38,20 @@ class Event
         data = Crawler.new.update
         data.each do |json|
           #todo: insert image into message
-          reply_messages.push({type: "imagemap", baseUrl: data, altText: "", baseSize: {height: 1040, width: 1040},})
-          if(messages.size == 5)
+          type = "imagemap"
+          base_link = data[:link]
+          image_size = {height: 1040, width: 1040}
+          text = data[:title]
+          action = []
+          reply_messages.push({type: type, baseUrl: base_link, altText: text, baseSize: image_size, action: action})
+          if(reply_messages.size == 5)
             break;
           end
         end
       when "UwU"
-        reply_messages.push("Berisik") 
+        reply_messages.push({type: "text", text: "Berisik"}) 
       else
-        reply_messages.push("Command not recognized!")
+        reply_messages.push({type: "text", text: "Command not recognized!"})
       end
       response = client.reply_message(@replyToken, reply_messages)
       puts(response)
@@ -58,7 +63,7 @@ private
   def client
     @client ||= Line::Bot::Client.new { |config|
     config.channel_secret = ENV["LINE_BOT_CHANNEL_SECRET"]
-    config.channel_token = ENV["LINE_BOT_CHANNEL_TOKEN"]
+    config.channel_token = ENV["LINE_BOT_CHANNEL_SECRETCHANNEL_TOKEN"]
     }
   end
 end
