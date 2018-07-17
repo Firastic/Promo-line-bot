@@ -8,6 +8,7 @@ class CallbackController < ApplicationController
       render json: {success: true}, status: :ok
     else
       render json: {errors: @events.errors}, status: :unprocessable_entity
+    end
   end
 
 private

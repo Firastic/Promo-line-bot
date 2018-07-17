@@ -1,4 +1,7 @@
+require 'line/bot'
+
 class Event
+  attr_reader :errors
   def initialize(params, signature, body)
     @body = body
     @signature = signature
@@ -14,19 +17,20 @@ class Event
     #todo: better validation
     @errors = []
     unless client.validate_signature(@body, @signature)
-      errors.push("Bad request")
+      @errors.push("Bad request")
     end
     @errors.empty?
+    true
   end
 
   def response
     body = {}
     if(@type == "message")
       #todo post into line using faraday
-      link = "https://api.line.me"
-      conn = Faraday.new(url: link) do |faraday|
-        faraday.authorization = true #todo: add channel access token
-      end
+      # link = "https://api.line.me"
+      # conn = Faraday.new(url: link) do |faraday|
+      #   faraday.authorization = true #todo: add channel access token
+      # end
       body["replyToken"] = 1 #todo: add replyToken
 
       case @message["text"]
@@ -35,19 +39,18 @@ class Event
         messages = []
         data.each do |json|
           #todo: insert image into message
-          message.push({type: "imagemap", baseUrl: data, altText: "", baseSize{height: 1040, width: 1040},})
-          if(messages.size == 5)break;
+          message.push({type: "imagemap", baseUrl: data, altText: "", baseSize: {height: 1040, width: 1040},})
+          if(messages.size == 5)
+            break;
+          end
         end
         body["messages"] = messages
-
-        
-      when 'UwU'
+      when "UwU"
         body["messages"] = "Berisik"
       else
         body["messages"] = "Command not recognized!"
       end
-
-      conn.post '/v2/bot/message/reply', body
+      client.reply_message('token', body)
     end
   end
 
@@ -56,6 +59,6 @@ private
     @client ||= Line::Bot::Client.new { |config|
     config.channel_secret = ENV["LINE_CHANNEL_SECRET"]
     config.channel_token = ENV["LINE_CHANNEL_TOKEN"]
-  }
+    }
   end
 end
