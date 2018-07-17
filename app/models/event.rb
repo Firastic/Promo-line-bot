@@ -38,17 +38,17 @@ class Event
         data = Crawler.new.update
         data.each do |json|
           #todo: insert image into message
-          reply_message.push({type: "imagemap", baseUrl: data, altText: "", baseSize: {height: 1040, width: 1040},})
+          reply_messages.push({type: "imagemap", baseUrl: data, altText: "", baseSize: {height: 1040, width: 1040},})
           if(messages.size == 5)
             break;
           end
         end
       when "UwU"
-        reply_message.push("Berisik") 
+        reply_messages.push("Berisik") 
       else
-        reply_message.push("Command not recognized!")
+        reply_messages.push("Command not recognized!")
       end
-      client.reply_message(@replyToken, reply_message)
+      client.reply_message(@replyToken, reply_messages)
     end
   end
 
