@@ -48,7 +48,9 @@ class Event
       else
         reply_messages.push("Command not recognized!")
       end
-      client.reply_message(@replyToken, reply_messages)
+      response = client.reply_message(@replyToken, reply_messages)
+      puts(response)
+      response
     end
   end
 
