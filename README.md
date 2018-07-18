@@ -17,8 +17,8 @@ Website ini didesain sebagai webhook yang akan mengirimkan latest promo ke line 
 
 ## Screenshot
 
-![alt text](screenshots/image1.jpg)
-![alt text](screenshots/image2.jpg)
+![alt text](screenshots/image1.jpg){:height="50%", :width="50%"}
+![alt text](screenshots/image2.jpg){:height="50%", :width="50%"}
 
 ## Use
 
