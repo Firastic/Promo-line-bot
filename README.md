@@ -1,13 +1,15 @@
 # Promo Scraper Line Bot (Prototype)
 
 ## Prequisites:
--Ruby 2.4.4
--Rails
+- Ruby 2.4.4 <br>
+- Rails
 
 ## Description
 
 Nama: Adyaksa Wisanggeni
+
 NIM: 16517351
+
 
 Projek ini dibuat untuk menyelesaikan tugas SPARTA tentang pembuatan karya
 
