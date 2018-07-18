@@ -22,6 +22,7 @@ class Crawler
       if(!Promo.where(title: parse_title(title[index].text),  source: "tokopedia", link: source[index]["href"]).exists?)
         Promo.create(title: parse_title(title[index].text), source: "tokopedia", link: source[index]["href"])
         promo_image = JSON.parse(page.css("div.promotion-image")[index].children[1]["data-click"])["ecommerce"]["promoClick"]["promotions"][0]["creative_url"]
+        convert = ImageList.new(promo_image)
         @result.push({title: parse_title(title[index].text), source: "tokopedia", link: source[index]["href"], promo_image: promo_image})
       end
     end

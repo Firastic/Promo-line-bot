@@ -37,7 +37,8 @@ class Event
         datas = Crawler.new.update
         datas.each do |data|
           #todo: insert image into message
-          reply_messages.push({type: "image", originalContentUrl: data[:link], previewImageUrl: data[:link]})
+          binding.pry
+          reply_messages.push({type: "image", originalContentUrl: data[:promo_image], previewImageUrl: data[:promo_image]})
           reply_messages.push({type: "text", text: "Promo from #{data[:source]}: #{data[:title]}"})
           if(reply_messages.size == 4)
             break;
