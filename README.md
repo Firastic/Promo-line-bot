@@ -18,14 +18,18 @@ Website ini didesain sebagai webhook yang akan mengirimkan latest promo ke line 
 ## Use
 
 1. Download program
-2. Setup environment variable yang dibutuhkan, yaitu
+2. Run
+```
+Bundle install
+```
+3. Setup environment variable yang dibutuhkan, yaitu
 ```
 channel_secret = ENV["LINE_BOT_CHANNEL_SECRET"]
 channel_token = ENV["LINE_BOT_CHANNEL_TOKEN"]
 ```
-3. Atur setting di line console agar mengirimkan webhook ke `/callback`
-4. Upload ke hosting yang diinginkan
-5. Jalankan program
+4. Atur setting di line console agar mengirimkan webhook ke `/callback`
+5. Upload ke hosting yang diinginkan
+6. Jalankan program
 
 Atau alternatif lain, bot ini dapat dicoba dengan menambah User Id `@njn9211k` sebagai teman
 
