@@ -31,20 +31,15 @@ class Event
       # conn = Faraday.new(url: link) do |faraday|
       #   faraday.authorization = true #todo: add channel access token
       # end
-      body["replyToken"] = 1 #todo: add replyToken
       reply_messages = []
       case @message["text"]
       when "!update"
-        data = Crawler.new.update
-        data.each do |json|
+        datas = Crawler.new.update
+        datas.each do |data|
           #todo: insert image into message
-          type = "imagemap"
-          base_link = data[:link]
-          image_size = {height: 1040, width: 1040}
-          text = data[:title]
-          action = []
-          reply_messages.push({type: type, baseUrl: base_link, altText: text, baseSize: image_size, action: action})
-          if(reply_messages.size == 5)
+          reply_messages.push({type: "image", originalContentUrl: data[:link], previewImageUrl: data[:link]})
+          reply_messages.push({type: "text", text: "Promo from #{data[:source]}: #{data[:title]}"})
+          if(reply_messages.size == 4)
             break;
           end
         end
