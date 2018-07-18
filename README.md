@@ -15,11 +15,6 @@ Projek ini dibuat untuk menyelesaikan tugas SPARTA tentang pembuatan karya
 
 Website ini didesain sebagai webhook yang akan mengirimkan latest promo ke line bot. Untuk saat ini, page yang discrape oleh program ini hanya dari `https://www.tokopedia.com/promo/`.
 
-## Screenshot
-<a href="url"><img src="screenshots/image1.jpg" align="left" width="200" ></a>
-<a href="url"><img src="screenshots/image2.jpg" align="left" width="200" ></a>
-<br>
-
 ## Use
 
 1. Download program
@@ -36,4 +31,7 @@ channel_token = ENV["LINE_BOT_CHANNEL_TOKEN"]
 
 Program ini hanya memiliki 1 command, yaitu `!update` untuk mengupdate promo baru dan mengirimkannya ke user. Tipe image yang disupport adalah `.jpg`, sehingga jika image dari promo menggunakan tipe `.png`, bot tidak akan mengeluarkan image tersebut. Penggunaan bot hanya diperbolehkan dengan mengirimkan command `!update` melalui personal message
 
-
+## Screenshot
+<a href="url"><img src="screenshots/image1.jpg" align="left" width="200" ></a>
+<a href="url"><img src="screenshots/image2.jpg" align="left" width="200" ></a>
+<br>
