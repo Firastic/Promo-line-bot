@@ -16,9 +16,8 @@ Projek ini dibuat untuk menyelesaikan tugas SPARTA tentang pembuatan karya
 Website ini didesain sebagai webhook yang akan mengirimkan latest promo ke line bot. Untuk saat ini, page yang discrape oleh program ini hanya dari `https://www.tokopedia.com/promo/`.
 
 ## Screenshot
-
-![alt text](screenshots/image1.jpg){:height="50%", :width="50%"}
-![alt text](screenshots/image2.jpg){:height="50%", :width="50%"}
+<a href="url"><img src="screenshots/image1.jpg" align="left" width="200" ></a>
+<a href="url"><img src="screenshots/image2.jpg" align="left" width="200" ></a>
 
 ## Use
 
