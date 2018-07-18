@@ -27,6 +27,8 @@ channel_token = ENV["LINE_BOT_CHANNEL_TOKEN"]
 4. Upload ke hosting yang diinginkan
 5. Jalankan program
 
+Atau alternatif lain, bot ini dapat dicoba dengan menambah User Id `@njn9211k` sebagai teman
+
 ## Command
 
 Program ini hanya memiliki 1 command, yaitu `!update` untuk mengupdate promo baru dan mengirimkannya ke user. Tipe image yang disupport adalah `.jpg`, sehingga jika image dari promo menggunakan tipe `.png`, bot tidak akan mengeluarkan image tersebut. Penggunaan bot hanya diperbolehkan dengan mengirimkan command `!update` melalui personal message
