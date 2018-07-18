@@ -9,6 +9,7 @@ class Event
     if(@type == "message")
       @replyToken = params[0]["replyToken"]
       @source = params[0]["source"]
+      @userId = @source["userId"]
       @message = params[0]["message"]
     end
   end
@@ -20,7 +21,12 @@ class Event
       @errors.push("Bad request")
     end
     @errors.empty?
-    true
+    if(@source["type"] == "group")
+      @errors.push("Cannot use this bot in group!")
+      false
+    else 
+      true
+    end
   end
 
   def response
@@ -34,7 +40,7 @@ class Event
       reply_messages = []
       case @message["text"]
       when "!update"
-        datas = Crawler.new.update  
+        datas = Crawler.new.update(@userId)
         datas.each do |data|
           #todo: insert image into message
           if(data[:promo_image].split('.').last == 'png')
@@ -42,7 +48,7 @@ class Event
           else
             reply_messages.push({type: "image", originalContentUrl: data[:promo_image], previewImageUrl: data[:promo_image]})
           end
-          reply_messages.push({type: "text", text: "Promo from #{data[:source]}: #{data[:title]}"})
+          reply_messages.push({type: "text", text: "Promo from #{data[:source]}: #{data[:title]} #{data[:link]}"})
           if(reply_messages.size == 4)
             break;
           end
