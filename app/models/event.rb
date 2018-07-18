@@ -34,15 +34,22 @@ class Event
       reply_messages = []
       case @message["text"]
       when "!update"
-        datas = Crawler.new.update
+        datas = Crawler.new.update  
         datas.each do |data|
           #todo: insert image into message
-          binding.pry
-          reply_messages.push({type: "image", originalContentUrl: data[:promo_image], previewImageUrl: data[:promo_image]})
+          if(data[:promo_image].split('.').last == 'png')
+            reply_messages.push({type: "text", text: "Sorry! Because of unsupported format, we cannot display this image"})
+          else
+            reply_messages.push({type: "image", originalContentUrl: data[:promo_image], previewImageUrl: data[:promo_image]})
+          end
           reply_messages.push({type: "text", text: "Promo from #{data[:source]}: #{data[:title]}"})
           if(reply_messages.size == 4)
             break;
           end
+        end
+        puts(reply_messages)
+        if datas.count == 0
+          reply_messages.push({type: "text", text: "There is no more promo! "})
         end
       when "UwU"
         reply_messages.push({type: "text", text: "Berisik"}) 
